@@ -13,6 +13,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.NoSuchElementException;
+import java.util.Objects;
 import java.util.Set;
 
 import org.eclipse.xtext.xbase.lib.Functions.Function1;
@@ -1042,5 +1043,26 @@ import com.google.common.collect.Sets;
 			max = comparator.compare(max, element) >= 0 ? max : element;
 		}
 		return max;
+	}
+
+    /**
+     * Returns <tt>true</tt> if this Iterator contains the specified element.
+     * More formally, returns <tt>true</tt> if and only if this Iterator contains
+     * at least one element <tt>e</tt> such that
+     * <tt>(o==null&nbsp;?&nbsp;e==null&nbsp;:&nbsp;o.equals(e))</tt>.
+     *
+     * @param iterable 
+     * 			the elements to test
+     * @param o 
+     * 			element whose presence in this Iterator is to be tested
+     * @return <tt>true</tt> if this Iterator contains the specified element
+     */
+	public static <T> boolean contains(Iterator<T> iterator, Object o) {
+		while (iterator.hasNext()) {
+			if (Objects.equals(o, iterator.next())) {
+				return true;
+			}
+		}
+		return false;
 	}
 }

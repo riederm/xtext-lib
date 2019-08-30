@@ -308,4 +308,15 @@ public class IterableExtensionsTest extends BaseIterablesIteratorsTest<Iterable<
 		};
 		assertEquals(newArrayList("Hello", "foo", "Hello", "bar"), newArrayList(IterableExtensions.flatMap(list, function)));
 	}
+	
+	@Test public void testContains() {
+		ArrayList<String> list = newArrayList("element1", "element2", "element3", null);
+		
+		assertTrue(IterableExtensions.contains(list, "element3"));
+		assertTrue(IterableExtensions.contains(list, new String("element3")));
+		assertTrue(IterableExtensions.contains(list, null));
+		
+		assertFalse(IterableExtensions.contains(list, "element4"));
+		assertFalse(IterableExtensions.contains(list, new String("element4")));
+	}
 }
